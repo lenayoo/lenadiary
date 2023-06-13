@@ -4,6 +4,12 @@ import { useState } from 'react'
 function App() {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
+  const [emotion, setEmotion] = useState(3)
+  const [diary, setDiary] = useState({
+    title: '',
+    text: '',
+    emotion: 3,
+  })
 
   function inputHandler(e) {
     setTitle(e.target.value)
@@ -15,28 +21,38 @@ function App() {
     console.log(e.target.value)
   }
 
-  function submitHandler() {}
+  function selectHandler(e) {
+    setEmotion(e.target.value)
+    console.log(e.target.value)
+  }
+
+  function submitHandler(e) {
+    e.preventDefault()
+    setDiary({ title: setTitle, text: setText, emotion: setEmotion })
+    console.log(setDiary)
+  }
 
   return (
     <div className="App">
       <h1>Lena Diary</h1>
-      <form className="body">
+      <form className="body" onSubmit={submitHandler}>
+        <label>what happened</label>
         <input className="writer" onChange={inputHandler} value={title} />
+        <label>In details</label>
         <textarea
           className="diary-content"
           onChange={textareaHandler}
           value={text}
         ></textarea>
-        <select className="emotion">
+        <label>check today's rate</label>
+        <select className="emotion" onChange={selectHandler} value={emotion}>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
-        <button type="submit" onSubmit={submitHandler}>
-          submit
-        </button>
+        <button type="submit">submit</button>
       </form>
       <div className="line"></div>
     </div>
