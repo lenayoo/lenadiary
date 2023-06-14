@@ -2,50 +2,53 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [emotion, setEmotion] = useState(3)
   const [diary, setDiary] = useState({
     title: '',
     text: '',
     emotion: 3,
   })
 
-  function inputHandler(e) {
-    setTitle(e.target.value)
-    console.log(e.target.value)
-  }
+  function onChangeHandler(e) {
+    setDiary({
+      ...diary,
+      [e.target.name]: e.target.value,
+    })
 
-  function textareaHandler(e) {
-    setText(e.target.value)
-    console.log(e.target.value)
-  }
-
-  function selectHandler(e) {
-    setEmotion(e.target.value)
+    console.log(e.target.name)
     console.log(e.target.value)
   }
 
   function submitHandler(e) {
     e.preventDefault()
-    setDiary({ title: setTitle, text: setText, emotion: setEmotion })
-    console.log(setDiary)
+    console.log(diary)
+    alert('오늘의 일기를 저장했습니다.')
   }
 
   return (
     <div className="App">
       <h1>Lena Diary</h1>
       <form className="body" onSubmit={submitHandler}>
-        <label>what happened</label>
-        <input className="writer" onChange={inputHandler} value={title} />
-        <label>In details</label>
+        <label>제목</label>
+        <input
+          className="writer"
+          onChange={onChangeHandler}
+          name="title"
+          value={diary.title}
+        />
+        <label>내용</label>
         <textarea
           className="diary-content"
-          onChange={textareaHandler}
-          value={text}
-        ></textarea>
-        <label>check today's rate</label>
-        <select className="emotion" onChange={selectHandler} value={emotion}>
+          onChange={onChangeHandler}
+          name="text"
+          value={diary.text}
+        />
+        <label>감정점수</label>
+        <select
+          className="emotion"
+          onChange={onChangeHandler}
+          name="emotion"
+          value={diary.emotion}
+        >
           <option>1</option>
           <option>2</option>
           <option>3</option>
