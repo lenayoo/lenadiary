@@ -28,17 +28,33 @@
 }
 
 button {
-  width: 200px;
-  height: 50px;
-  border-radius: 4px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   border: none;
-  background-color: #fff5b8;
-  color: black;
-  font-size: 18px;
+  background-color: #146c94;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 button:hover {
   transform: translateY(-0.25em);
+}
+
+.diary-list {
+  width: 50%;
+  min-height: 150px;
+  background-color: #fbffdc;
+  border-radius: 15px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 20px;
+}
+
+.diary-line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
 }
