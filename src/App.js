@@ -18,7 +18,11 @@ function App() {
 
   function submitHandler(e) {
     e.preventDefault()
-    console.log(diary)
+    if (diary.title === '') {
+      return alert('제목을 입력해주세요')
+    } else if (diary.text === '') {
+      return alert('내용을 입력해주세요')
+    }
     setDiaries([...diaries, diary])
     setDiary({ title: '', text: '', emotion: 1 })
     alert('오늘의 일기를 저장했습니다.')
@@ -49,11 +53,11 @@ function App() {
           name="emotion"
           value={diary.emotion}
         >
-          <option>매우좋음</option>
-          <option>완전 좋음</option>
-          <option>꽤 좋음</option>
-          <option>Perfect</option>
-          <option>성장의 날</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
         </select>
         <button type="submit">submit</button>
       </form>
